@@ -10,6 +10,7 @@ const Article = require("./models/Article");
 
 const authRoutes = require("./routes/auth");
 const testRoutes = require("./routes/test");
+const petRoutes = require("./routes/pet");
 
 const app = express();
 
@@ -22,6 +23,7 @@ connectDB();
 
 app.use("/api/auth", authRoutes);
 app.use("/api/test", testRoutes);
+app.use("/api/pets", petRoutes);
 
 app.get("/", (req, res) => {
     res.send("PawConnect API is running!");
