@@ -2,6 +2,7 @@ const express = require("express");
 const Pet = require("../models/Pet");
 const authMiddleware = require("../middleware/authMiddleware");
 const roleMiddleware = require("../middleware/roleMiddleware");
+const upload = require("../middleware/uploadMiddleware");
 
 const router = express.Router();
 
@@ -10,13 +11,22 @@ router.post(
     "/",
     authMiddleware,
     roleMiddleware("shelter", "admin"),
+    upload.single("image"),
     async (req, res) => {
         try {
             const pet = await Pet.create({
-                ...req.body,
+                name: req.body.name,
+                species: req.body.species,
+                breed: req.body.breed,
+                age: req.body.age,
+                gender: req.body.gender,
+                vaccinated: req.body.vaccinated === "true",
+                description: req.body.description,
+                location: req.body.location,
+                imageURL: req.file ? `/uploads/${req.file.filename}` : "",
                 ownerId: req.user.userId
             });
-
+            
             res.status(201).json({
                 message: "Pet added successfully",
                 pet
@@ -33,12 +43,57 @@ router.post(
 // GET all pets
 router.get("/", async (req, res) => {
     try {
-        const pets = await Pet.find();
+        const {
+            species,
+            breed,
+            gender,
+            vaccinated,
+            location,
+            status,
+            search
+        } = req.query;
+
+        const filter = {};
+
+        if (species) {
+            filter.species = species;
+        }
+
+        if (breed) {
+            filter.breed = breed;
+        }
+
+        if (gender) {
+            filter.gender = gender;
+        }
+
+        if (vaccinated !== undefined) {
+            filter.vaccinated = vaccinated === "true";
+        }
+
+        if (location) {
+            filter.location = location;
+        }
+
+        if (status) {
+            filter.status = status;
+        }
+
+        if (search) {
+            filter.$or = [
+                { name: { $regex: search, $options: "i" } },
+                { species: { $regex: search, $options: "i" } },
+                { breed: { $regex: search, $options: "i" } }
+            ];
+        }
+
+        const pets = await Pet.find(filter);
 
         res.status(200).json({
             count: pets.length,
             pets
         });
+
     } catch (error) {
         res.status(500).json({
             message: "Failed to fetch pets",
