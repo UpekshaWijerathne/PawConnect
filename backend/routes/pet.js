@@ -72,7 +72,10 @@ router.get("/", async (req, res) => {
         }
 
         if (location) {
-            filter.location = location;
+            filter.location = {
+                $regex: location,
+                $options: "i"
+            };
         }
 
         if (status) {
