@@ -1,0 +1,154 @@
+.navbar {
+    width: 100%;
+    background: rgba(255, 250, 244, 0.95);
+    border-bottom: 1px solid #f1e5da;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    text-decoration: none;
+    color: #843d1c;
+
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f9e2d4;
+    color: #a94b24;
+}
+
+/* Navigation */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #5c493f;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #9b431e;
+}
+
+/* Login */
+
+.nav-login {
+    padding: 10px 18px;
+
+    border: 1px solid #a94b24;
+    border-radius: 25px;
+
+    color: #a94b24 !important;
+}
+
+.nav-login:hover {
+    background: #fff0e7;
+}
+
+/* Adopt button */
+
+.nav-adopt {
+    padding: 11px 20px;
+
+    background: #9d431e;
+    color: white !important;
+
+    border-radius: 25px;
+}
+
+.nav-adopt:hover {
+    background: #7e3517;
+}
+
+/* Mobile menu */
+
+.mobile-menu {
+    display: none;
+
+    border: none;
+    background: transparent;
+
+    color: #843d1c;
+
+    cursor: pointer;
+}
+
+/* Responsive */
+
+@media (max-width: 850px) {
+
+    .navbar-container {
+        padding: 15px 25px;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+        top: 75px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 25px;
+
+        background: #fffaf4;
+
+        flex-direction: column;
+        gap: 20px;
+
+        border-bottom: 1px solid #eadbd0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-login,
+    .nav-adopt {
+        width: 80%;
+        text-align: center;
+    }
+}

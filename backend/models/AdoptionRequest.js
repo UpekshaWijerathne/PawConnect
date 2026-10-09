@@ -30,6 +30,7 @@ const adoptionRequestSchema = new mongoose.Schema(
     }
 );
 
+
 module.exports = mongoose.model(
     "AdoptionRequest",
     adoptionRequestSchema

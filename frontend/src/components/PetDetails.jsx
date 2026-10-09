@@ -1,7 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams , useNavigate} from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import {
+    ArrowLeft,
+    Heart,
+    MapPin,
+    PawPrint,
+    ShieldCheck,
+    CalendarDays,
+    VenusAndMars,
+    CheckCircle,
+    AlertCircle
+} from "lucide-react";
+
 import { getPetById } from "../services/petService";
 import { createAdoptionRequest } from "../services/adoptionService";
+
 import "./PetDetails.css";
 
 function PetDetails() {
@@ -14,14 +27,21 @@ function PetDetails() {
 
     const [requestMessage, setRequestMessage] = useState("");
     const [requestError, setRequestError] = useState("");
+    const [submitting, setSubmitting] = useState(false);
+
+    const [favorite, setFavorite] = useState(false);
 
     useEffect(() => {
         const loadPet = async () => {
             try {
+                setLoading(true);
+                setError("");
+
                 const data = await getPetById(id);
                 setPet(data.pet);
-            } catch (error) {
-                setError(error.message);
+            } catch (err) {
+                console.error(err);
+                setError("Unable to load pet details.");
             } finally {
                 setLoading(false);
             }
@@ -39,100 +59,334 @@ function PetDetails() {
         }
 
         try {
+            setSubmitting(true);
             setRequestMessage("");
             setRequestError("");
 
             await createAdoptionRequest(pet._id, token);
 
             setRequestMessage(
-                "Adoption request submitted successfully!"
+                "Your adoption request has been submitted successfully!"
             );
 
-        } catch (error) {
-            setRequestError(error.message);
+        } catch (err) {
+            setRequestError(
+                err.message || "Unable to submit adoption request."
+            );
+        } finally {
+            setSubmitting(false);
         }
     };
 
     if (loading) {
-        return <p>Loading pet details...</p>;
+        return (
+            <main className="details-page-state">
+                <div className="state-icon">
+                    <PawPrint size={32} />
+                </div>
+
+                <h2>Loading pet details...</h2>
+                <p>Please wait while we find your companion.</p>
+            </main>
+        );
     }
 
     if (error) {
-        return <p>{error}</p>;
+        return (
+            <main className="details-page-state error-state">
+
+                <div className="state-icon">
+                    <AlertCircle size={32} />
+                </div>
+
+                <h2>Something went wrong</h2>
+                <p>{error}</p>
+
+                <Link to="/pets" className="back-button">
+                    <ArrowLeft size={17} />
+                    Back to Pets
+                </Link>
+
+            </main>
+        );
     }
 
     if (!pet) {
-        return <p>Pet not found.</p>;
+        return (
+            <main className="details-page-state">
+
+                <div className="state-icon">
+                    <PawPrint size={32} />
+                </div>
+
+                <h2>Pet not found</h2>
+
+                <Link to="/pets" className="back-button">
+                    <ArrowLeft size={17} />
+                    Back to Pets
+                </Link>
+
+            </main>
+        );
     }
 
     return (
-        <div className="pet-details">
+        <main className="pet-details-page">
 
-            <div className="pet-details-card">
+            {/* ================= BACK ================= */}
 
-                <div>
-                    {pet.imageURL && (
-                        <img
-                            className="pet-details-image"
-                            src={`http://127.0.0.1:5000${pet.imageURL}`}
-                            alt={pet.name}
-                        />
-                    )}
-                </div>
+            <div className="details-container">
 
-                <div className="pet-details-info">
+                <Link to="/pets" className="back-link">
+                    <ArrowLeft size={18} />
+                    Back to Browse Pets
+                </Link>
 
-                    <h1>{pet.name}</h1>
 
-                    <h2>{pet.breed}</h2>
+                {/* ================= MAIN CARD ================= */}
 
-                    <div className="pet-info">
-                        <p>🐾 Species: {pet.species}</p>
-                        <p>🎂 Age: {pet.age} years</p>
-                        <p>⚥ Gender: {pet.gender}</p>
-                        <p>📍 Location: {pet.location}</p>
+                <section className="pet-details-card">
 
-                        <p>
-                            💉 Vaccinated:{" "}
-                            {pet.vaccinated ? "Yes" : "No"}
-                        </p>
+                    {/* IMAGE */}
+
+                    <div className="details-image-wrapper">
+
+                        {pet.imageURL ? (
+
+                            <img
+                                className="pet-details-image"
+                                src={`http://127.0.0.1:5000${pet.imageURL}`}
+                                alt={pet.name}
+                            />
+
+                        ) : (
+
+                            <div className="details-image-placeholder">
+                                <PawPrint size={70} />
+                            </div>
+
+                        )}
+
+                        <button
+                            className={`details-favorite ${
+                                favorite ? "active" : ""
+                            }`}
+                            onClick={() => setFavorite(!favorite)}
+                            aria-label="Add to favorites"
+                        >
+                            <Heart
+                                size={23}
+                                fill={
+                                    favorite
+                                        ? "currentColor"
+                                        : "none"
+                                }
+                            />
+                        </button>
+
+                        <span
+                            className={`details-status ${pet.status.toLowerCase()}`}
+                        >
+                            {pet.status}
+                        </span>
+
                     </div>
 
-                    <span className="pet-status">
-                        {pet.status}
-                    </span>
 
-                    {pet.status === "Available" && (
-                        <button onClick={handleAdoptionRequest}>
-                            🐾 Request Adoption
-                        </button>
-                    )}
+                    {/* INFORMATION */}
 
-                    {requestMessage && (
-                        <p>{requestMessage}</p>
-                    )}
+                    <div className="pet-details-info">
 
-                    {requestError && (
-                        <p>{requestError}</p>
-                    )}
+                        <span className="details-species">
+                            {pet.species}
+                        </span>
 
-                    <h3>Description</h3>
+                        <h1>{pet.name}</h1>
 
-                    <p className="pet-description">
-                        {pet.description}
-                    </p>
+                        <p className="details-breed">
+                            {pet.breed}
+                        </p>
 
-                    <h3>Description</h3>
 
-                    <p className="pet-description">
-                        {pet.description}
-                    </p>
+                        {/* Quick Info */}
 
-                </div>
+                        <div className="quick-info">
+
+                            <div className="quick-info-item">
+
+                                <CalendarDays size={19} />
+
+                                <div>
+                                    <span>Age</span>
+                                    <strong>
+                                        {pet.age}{" "}
+                                        {pet.age === 1
+                                            ? "year"
+                                            : "years"}
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div className="quick-info-item">
+
+                                <VenusAndMars size={19} />
+
+                                <div>
+                                    <span>Gender</span>
+                                    <strong>
+                                        {pet.gender}
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div className="quick-info-item">
+
+                                <MapPin size={19} />
+
+                                <div>
+                                    <span>Location</span>
+                                    <strong>
+                                        {pet.location}
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div className="quick-info-item">
+
+                                <ShieldCheck size={19} />
+
+                                <div>
+                                    <span>Vaccinated</span>
+                                    <strong>
+                                        {pet.vaccinated
+                                            ? "Yes"
+                                            : "No"}
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        {/* Description */}
+
+                        <div className="description-section">
+
+                            <h2>About {pet.name}</h2>
+
+                            <p>
+                                {pet.description}
+                            </p>
+
+                        </div>
+
+
+                        {/* Adoption */}
+
+                        {pet.status === "Available" && (
+
+                            <div className="adoption-section">
+
+                                <div className="adoption-text">
+
+                                    <PawPrint size={21} />
+
+                                    <div>
+                                        <strong>
+                                            Give {pet.name} a loving home
+                                        </strong>
+
+                                        <span>
+                                            Submit an adoption request
+                                            to get started.
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    className="adopt-button"
+                                    onClick={handleAdoptionRequest}
+                                    disabled={submitting}
+                                >
+                                    {submitting
+                                        ? "Submitting..."
+                                        : `Adopt ${pet.name}`}
+                                </button>
+
+                            </div>
+
+                        )}
+
+
+                        {/* Success */}
+
+                        {requestMessage && (
+
+                            <div className="request-message success">
+
+                                <CheckCircle size={20} />
+
+                                <span>
+                                    {requestMessage}
+                                </span>
+
+                            </div>
+
+                        )}
+
+
+                        {/* Error */}
+
+                        {requestError && (
+
+                            <div className="request-message failure">
+
+                                <AlertCircle size={20} />
+
+                                <span>
+                                    {requestError}
+                                </span>
+
+                            </div>
+
+                        )}
+
+
+                        {/* Non Available */}
+
+                        {pet.status !== "Available" && (
+
+                            <div className="unavailable-message">
+
+                                <AlertCircle size={19} />
+
+                                <span>
+                                    This pet is currently{" "}
+                                    <strong>
+                                        {pet.status.toLowerCase()}
+                                    </strong>
+                                    .
+                                </span>
+
+                            </div>
+
+                        )}
+
+                    </div>
+
+                </section>
 
             </div>
 
-        </div>
+        </main>
     );
 }
 

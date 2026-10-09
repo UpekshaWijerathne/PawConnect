@@ -1,68 +1,526 @@
-.pet-details {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
+/* =========================================
+   PET DETAILS PAGE
+========================================= */
+
+.pet-details-page {
+    min-height: 100vh;
+    background: #fffaf6;
+
+    padding: 45px 20px 100px;
 }
+
+.details-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   BACK LINK
+========================================= */
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: 22px;
+
+    color: #8f4b2d;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.back-link:hover {
+    color: #6e321c;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
 
 .pet-details-card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    background: white;
-    border-radius: 16px;
+
+    grid-template-columns: 0.95fr 1.05fr;
+
+    gap: 45px;
+
     padding: 25px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    background: white;
+
+    border: 1px solid #eaded5;
+    border-radius: 24px;
+
+    box-shadow:
+        0 12px 40px rgba(70, 40, 25, 0.08);
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.details-image-wrapper {
+    position: relative;
+
+    height: 540px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #f6ebe3;
 }
 
 .pet-details-image {
     width: 100%;
-    height: 400px;
+    height: 100%;
+
     object-fit: cover;
-    border-radius: 12px;
+
+    display: block;
+}
+
+.details-image-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #c38b6e;
+}
+
+
+/* =========================================
+   FAVORITE
+========================================= */
+
+.details-favorite {
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    color: #9d431e;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.1);
+
+    transition: 0.2s;
+}
+
+.details-favorite:hover {
+    transform: scale(1.08);
+}
+
+.details-favorite.active {
+    background: #9d431e;
+    color: white;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.details-status {
+    position: absolute;
+
+    left: 16px;
+    bottom: 16px;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.details-status.available {
+    background: #e5f4e7;
+    color: #34733b;
+}
+
+.details-status.pending {
+    background: #fff1d8;
+    color: #95621c;
+}
+
+.details-status.adopted {
+    background: #eee9e6;
+    color: #74645c;
+}
+
+
+/* =========================================
+   INFORMATION
+========================================= */
+
+.pet-details-info {
+    padding: 15px 10px 10px 0;
+}
+
+.details-species {
+    color: #a14b28;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
 .pet-details-info h1 {
-    font-size: 36px;
-    margin-bottom: 5px;
+    margin: 8px 0 3px;
+
+    color: #39271f;
+
+    font-size: 48px;
+    line-height: 1.05;
 }
 
-.pet-details-info h2 {
-    color: #666;
-    font-size: 20px;
-    margin-bottom: 25px;
+.details-breed {
+    margin: 0 0 28px;
+
+    color: #92766a;
+
+    font-size: 18px;
 }
 
-.pet-info {
+
+/* =========================================
+   QUICK INFO
+========================================= */
+
+.quick-info {
     display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
     gap: 12px;
-    margin-bottom: 25px;
+
+    margin-bottom: 30px;
 }
 
-.pet-info p {
+.quick-info-item {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 13px;
+
+    border-radius: 12px;
+
+    background: #fff8f3;
+
+    color: #9d5a3a;
+}
+
+.quick-info-item > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.quick-info-item span {
+    color: #9a8277;
+
+    font-size: 11px;
+}
+
+.quick-info-item strong {
+    color: #4b3930;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description-section {
+    margin-bottom: 27px;
+}
+
+.description-section h2 {
+    margin: 0 0 9px;
+
+    color: #46342c;
+
+    font-size: 20px;
+}
+
+.description-section p {
     margin: 0;
-    font-size: 16px;
+
+    color: #756259;
+
+    font-size: 14px;
+
+    line-height: 1.75;
 }
 
-.pet-description {
-    line-height: 1.6;
-    color: #555;
+
+/* =========================================
+   ADOPTION
+========================================= */
+
+.adoption-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 17px;
+
+    border-radius: 15px;
+
+    background: #fff1e8;
+
+    border: 1px solid #f2d8ca;
 }
 
-.pet-status {
-    display: inline-block;
-    padding: 7px 14px;
-    border-radius: 20px;
-    background: #e8f5e9;
-    color: #2e7d32;
-    font-weight: bold;
+.adoption-text {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: #9d431e;
 }
 
-@media (max-width: 700px) {
+.adoption-text > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.adoption-text strong {
+    color: #5b3526;
+
+    font-size: 13px;
+}
+
+.adoption-text span {
+    color: #92796d;
+
+    font-size: 11px;
+}
+
+.adopt-button {
+    flex-shrink: 0;
+
+    padding: 12px 19px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #9d431e;
+    color: white;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.adopt-button:hover {
+    background: #7e3517;
+}
+
+.adopt-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   MESSAGES
+========================================= */
+
+.request-message,
+.unavailable-message {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 15px;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+}
+
+.request-message.success {
+    background: #eaf6eb;
+    color: #327139;
+}
+
+.request-message.failure {
+    background: #fcebea;
+    color: #a33c32;
+}
+
+.unavailable-message {
+    background: #f2eeeb;
+    color: #71635c;
+}
+
+
+/* =========================================
+   LOADING / ERROR
+========================================= */
+
+.details-page-state {
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: #fffaf6;
+
+    padding: 30px;
+}
+
+.details-page-state h2 {
+    margin: 15px 0 7px;
+
+    color: #49372e;
+}
+
+.details-page-state p {
+    margin: 0;
+
+    color: #806f66;
+}
+
+.state-icon {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f8e6db;
+    color: #a95b38;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 20px;
+
+    padding: 11px 17px;
+
+    border-radius: 10px;
+
+    background: #9d431e;
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+
     .pet-details-card {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+    .details-image-wrapper {
+        height: 450px;
+    }
+
+    .pet-details-info {
+        padding: 5px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .pet-details-page {
+        padding: 25px 15px 70px;
+    }
+
+    .pet-details-card {
+        padding: 15px;
+
+        border-radius: 18px;
+    }
+
+    .details-image-wrapper {
+        height: 350px;
+    }
+
+    .pet-details-info h1 {
+        font-size: 38px;
+    }
+
+    .quick-info {
         grid-template-columns: 1fr;
     }
 
-    .pet-details-image {
-        height: 300px;
+    .adoption-section {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .adopt-button {
+        width: 100%;
     }
 }
