@@ -716,3 +716,157 @@
         justify-content: center;
     }
 }
+
+.pet-management-actions {
+    display: flex;
+    gap: 10px;
+    padding: 0 18px 18px;
+}
+
+.pet-management-actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: white;
+    font-weight: 600;
+}
+
+.edit-pet-button {
+    color: #2563eb;
+}
+
+.delete-pet-button {
+    color: #dc2626;
+}
+
+.pet-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.6);
+    overflow-y: auto;
+}
+
+.pet-form-modal {
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 28px;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.pet-form-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.pet-form-heading h2 {
+    margin: 0 0 8px;
+}
+
+.pet-form-heading p {
+    margin: 0;
+    color: #64748b;
+}
+
+.pet-form-close {
+    border: none;
+    background: transparent;
+    padding: 5px;
+    color: #64748b;
+}
+
+.pet-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.pet-form-grid > label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.pet-form-grid input:not([type="checkbox"]),
+.pet-form-grid select,
+.pet-form-grid textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: white;
+}
+
+.pet-vaccinated-field {
+    flex-direction: row !important;
+    align-items: center;
+    align-self: center;
+}
+
+.pet-image-field,
+.pet-description-field {
+    grid-column: 1 / -1;
+}
+
+.pet-vaccinated-field input {
+    width: 17px;
+    height: 17px;
+}
+
+.pet-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.pet-cancel-button {
+    padding: 11px 18px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: white;
+    color: #334155;
+}
+
+.pet-form-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .pet-form-modal {
+        padding: 20px;
+    }
+
+    .pet-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pet-image-field,
+    .pet-description-field {
+        grid-column: auto;
+    }
+
+    .pet-management-actions {
+        flex-direction: column;
+    }
+}
