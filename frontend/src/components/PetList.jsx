@@ -25,14 +25,29 @@ function PetList() {
     const [location, setLocation] = useState("");
     const [status, setStatus] = useState("Available");
 
-    const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState(() => {
+        try {
+            return JSON.parse(
+                localStorage.getItem("pawconnect_favorites") || "[]"
+            ).map(String);
+        } catch {
+            return [];
+        }
+    });
 
     useEffect(() => {
         loadPets();
     }, [search, species, gender, vaccinated, location, status]);
 
+    useEffect(() => {
+        localStorage.setItem(
+            "pawconnect_favorites",
+            JSON.stringify(favorites)
+        );
+    }, [favorites]);
+
     const loadPets = async () => {
-        try {
+        try { 
             setLoading(true);
             setError("");
 
@@ -64,10 +79,12 @@ function PetList() {
     };
 
     const toggleFavorite = (id) => {
+        const petId = String(id);
+
         setFavorites((current) =>
-            current.includes(id)
-                ? current.filter((item) => item !== id)
-                : [...current, id]
+            current.includes(petId)
+                ? current.filter((item) => item !== petId)
+                : [...current, petId]
         );
     };
 

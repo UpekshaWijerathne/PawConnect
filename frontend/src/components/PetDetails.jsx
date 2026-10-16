@@ -29,7 +29,15 @@ function PetDetails() {
     const [requestError, setRequestError] = useState("");
     const [submitting, setSubmitting] = useState(false);
 
-    const [favorite, setFavorite] = useState(false);
+    const [favorites, setFavorites] = useState(() => {
+        try {
+            return JSON.parse(
+                localStorage.getItem("pawconnect_favorites") || "[]"
+            ).map(String);
+        } catch {
+            return [];
+        }
+    });
 
     useEffect(() => {
         const loadPet = async () => {
@@ -49,6 +57,29 @@ function PetDetails() {
 
         loadPet();
     }, [id]);
+
+    const isFavorite = pet
+        ? favorites.includes(String(pet._id))
+        : false;
+
+    const toggleFavorite = () => {
+        if (!pet) return;
+
+        const petId = String(pet._id);
+
+        setFavorites((current) => {
+            const updated = current.includes(petId)
+                ? current.filter((id) => id !== petId)
+                : [...current, petId];
+
+            localStorage.setItem(
+                "pawconnect_favorites",
+                JSON.stringify(updated)
+            );
+
+            return updated;
+        });
+    };
 
     const handleAdoptionRequest = async () => {
         const token = localStorage.getItem("token");
@@ -168,19 +199,15 @@ function PetDetails() {
                         )}
 
                         <button
-                            className={`details-favorite ${
-                                favorite ? "active" : ""
-                            }`}
-                            onClick={() => setFavorite(!favorite)}
-                            aria-label="Add to favorites"
+                            className={`details-favorite ${isFavorite ? "active" : ""}`}
+                            onClick={toggleFavorite}
+                            aria-label={
+                                isFavorite ? "Remove from favorites" : "Add to favorites"
+                            }
                         >
                             <Heart
                                 size={23}
-                                fill={
-                                    favorite
-                                        ? "currentColor"
-                                        : "none"
-                                }
+                                fill={isFavorite ? "currentColor" : "none"}
                             />
                         </button>
 

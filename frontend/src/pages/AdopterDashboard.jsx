@@ -14,6 +14,7 @@ import {
 
 import { getMyAdoptionRequests } from "../services/adoptionService";
 import "./AdopterDashboard.css";
+import { getPets } from "../services/petService";
 
 function AdopterDashboard() {
     const navigate = useNavigate();
@@ -38,9 +39,14 @@ function AdopterDashboard() {
             setLoading(true);
             setError("");
 
-            const data = await getMyAdoptionRequests(token);
+            const [requestData, petData] = await Promise.all([
+                getMyAdoptionRequests(token),
+                getPets()
+            ]);
 
-            setRequests(data.requests || []);
+            setRequests(requestData.requests || []);
+            setAllPets(petData.pets || []);
+
         } catch (err) {
             console.error(err);
             setError(
@@ -50,6 +56,35 @@ function AdopterDashboard() {
             setLoading(false);
         }
     };
+
+    const [allPets, setAllPets] = useState([]);
+
+    const [favorites, setFavorites] = useState(() => {
+        try {
+            return JSON.parse(
+                localStorage.getItem("pawconnect_favorites") || "[]"
+            ).map(String);
+        } catch {
+            return [];
+        }
+    });
+
+    const removeFavorite = (petId) => {
+        const updated = favorites.filter(
+            (id) => id !== String(petId)
+        );
+
+        localStorage.setItem(
+            "pawconnect_favorites",
+            JSON.stringify(updated)
+        );
+
+        setFavorites(updated);
+    };
+
+    const savedPets = allPets.filter((pet) =>
+        favorites.includes(String(pet._id))
+    );
 
     const handleLogout = () => {
         localStorage.removeItem("token");
@@ -222,6 +257,98 @@ function AdopterDashboard() {
                         </div>
 
                     </div>
+
+                    {/* ================= SAVED PETS ================= */}
+
+                    <section className="requests-section" id="saved-pets">
+                        <div className="section-title-row">
+                            <div>
+                                <h2>Saved Pets</h2>
+                                <p>Pets you've added to your favorites.</p>
+                            </div>
+
+                            <Link to="/pets" className="browse-more">
+                                Browse Pets
+                                <ArrowRight size={16} />
+                            </Link>
+                        </div>
+
+                        {savedPets.length === 0 ? (
+                            <div className="empty-dashboard">
+                                <div className="empty-dashboard-icon">
+                                    <Heart size={30} />
+                                </div>
+
+                                <h3>No saved pets yet</h3>
+
+                                <p>
+                                    Tap the heart on a pet you love to save it here.
+                                </p>
+
+                                <Link
+                                    to="/pets"
+                                    className="find-pet-button"
+                                >
+                                    Explore Pets
+                                    <ArrowRight size={17} />
+                                </Link>
+                            </div>
+                        ) : (
+                            <div className="request-list">
+                                {savedPets.map((pet) => (
+                                    <article
+                                        className="request-card"
+                                        key={pet._id}
+                                    >
+                                        <div className="request-pet-image">
+                                            {pet.imageURL ? (
+                                                <img
+                                                    src={`http://127.0.0.1:5000${pet.imageURL}`}
+                                                    alt={pet.name}
+                                                />
+                                            ) : (
+                                                <PawPrint size={35} />
+                                            )}
+                                        </div>
+
+                                        <div className="request-pet-info">
+                                            <h3>{pet.name}</h3>
+
+                                            <p>
+                                                {pet.species} • {pet.breed}
+                                            </p>
+
+                                            <span>
+                                                <MapPin size={13} />
+                                                {pet.location || "Location unavailable"}
+                                            </span>
+                                        </div>
+
+                                        <div className="request-status">
+                                            <span>{pet.status}</span>
+
+                                            <Link
+                                                to={`/pets/${pet._id}`}
+                                                className="request-view"
+                                            >
+                                                View Details
+                                                <ArrowRight size={16} />
+                                            </Link>
+
+                                            <button
+                                                type="button"
+                                                className="remove-favorite-btn"
+                                                onClick={() => removeFavorite(pet._id)}
+                                            >
+                                                <Heart size={16} fill="currentColor" />
+                                                Remove
+                                            </button>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        )}
+                    </section>
 
 
                     {/* ================= REQUESTS ================= */}
