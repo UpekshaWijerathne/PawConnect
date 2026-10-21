@@ -30,9 +30,13 @@ function PetDetails() {
     const [submitting, setSubmitting] = useState(false);
 
     const [favorites, setFavorites] = useState(() => {
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+
+        if (!user?.id) return [];
+
         try {
             return JSON.parse(
-                localStorage.getItem("pawconnect_favorites") || "[]"
+                localStorage.getItem(`pawconnect_favorites_${user.id}`) || "[]"
             ).map(String);
         } catch {
             return [];
@@ -58,12 +62,17 @@ function PetDetails() {
         loadPet();
     }, [id]);
 
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+
     const isFavorite = pet
         ? favorites.includes(String(pet._id))
         : false;
 
     const toggleFavorite = () => {
-        if (!pet) return;
+        if (!pet || !user?.id) {
+            navigate("/login");
+            return;
+        }
 
         const petId = String(pet._id);
 
@@ -73,7 +82,7 @@ function PetDetails() {
                 : [...current, petId];
 
             localStorage.setItem(
-                "pawconnect_favorites",
+                `pawconnect_favorites_${user.id}`,
                 JSON.stringify(updated)
             );
 
@@ -199,6 +208,7 @@ function PetDetails() {
                         )}
 
                         <button
+                            type="button"
                             className={`details-favorite ${isFavorite ? "active" : ""}`}
                             onClick={toggleFavorite}
                             aria-label={

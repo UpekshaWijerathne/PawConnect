@@ -59,32 +59,43 @@ function AdopterDashboard() {
 
     const [allPets, setAllPets] = useState([]);
 
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+
     const [favorites, setFavorites] = useState(() => {
+        if (!user?.id) return [];
+
         try {
             return JSON.parse(
-                localStorage.getItem("pawconnect_favorites") || "[]"
+                localStorage.getItem(
+                    `pawconnect_favorites_${user.id}`
+                ) || "[]"
             ).map(String);
         } catch {
             return [];
         }
     });
 
+
+    const savedPets = allPets.filter((pet) =>
+        favorites.includes(String(pet._id))
+    );
+
+
+
     const removeFavorite = (petId) => {
+        if (!user?.id) return;
+
         const updated = favorites.filter(
             (id) => id !== String(petId)
         );
 
         localStorage.setItem(
-            "pawconnect_favorites",
+            `pawconnect_favorites_${user.id}`,
             JSON.stringify(updated)
         );
 
         setFavorites(updated);
     };
-
-    const savedPets = allPets.filter((pet) =>
-        favorites.includes(String(pet._id))
-    );
 
     const handleLogout = () => {
         localStorage.removeItem("token");

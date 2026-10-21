@@ -6,19 +6,30 @@ import "./Navbar.css";
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+
+    const dashboardPath =
+        user?.role === "shelter"
+            ? "/shelter-dashboard"
+            : "/dashboard";
+
     return (
         <header className="navbar">
             <div className="navbar-container">
 
                 {/* Logo */}
-                <Link to="/" className="navbar-logo">
+                <Link
+                    to="/"
+                    className="navbar-logo"
+                    onClick={() => setMenuOpen(false)}
+                >
                     <div className="logo-icon">
                         <Heart size={22} fill="currentColor" />
                     </div>
                     <span>PawConnect</span>
                 </Link>
 
-                {/* Desktop Navigation */}
+                {/* Navigation */}
                 <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
                     <Link to="/" onClick={() => setMenuOpen(false)}>
                         Home
@@ -28,21 +39,37 @@ function Navbar() {
                         Browse Pets
                     </Link>
 
-                    <a href="#how-it-works" onClick={() => setMenuOpen(false)}>
+                    <a
+                        href="/#how-it-works"
+                        onClick={() => setMenuOpen(false)}
+                    >
                         How It Works
                     </a>
 
-                    <a href="#about" onClick={() => setMenuOpen(false)}>
+                    <a
+                        href="/#about"
+                        onClick={() => setMenuOpen(false)}
+                    >
                         About
                     </a>
 
-                    <Link
-                        to="/login"
-                        className="nav-login"
-                        onClick={() => setMenuOpen(false)}
-                    >
-                        Login
-                    </Link>
+                    {user ? (
+                        <Link
+                            to={dashboardPath}
+                            className="nav-login"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            Dashboard
+                        </Link>
+                    ) : (
+                        <Link
+                            to="/login"
+                            className="nav-login"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            Login
+                        </Link>
+                    )}
 
                     <Link
                         to="/pets"

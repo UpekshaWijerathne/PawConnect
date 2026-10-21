@@ -10,6 +10,7 @@ import {
 
 import { getPets } from "../services/petService";
 import "./Home.css";
+import heroImage from "../assets/hero.png";
 
 function Home() {
     const [pets, setPets] = useState([]);
@@ -105,27 +106,25 @@ function Home() {
             {/* ================= STATS ================= */}
 
             <section className="stats-section">
-
                 <div className="stat-card">
-                    <strong>200+</strong>
-                    <span>Pets Adopted</span>
+                    <strong>1</strong>
+                    <span>Partner Shelter</span>
                 </div>
 
                 <div className="stat-card">
-                    <strong>150+</strong>
-                    <span>Partner Shelters</span>
+                    <strong>{pets.length}</strong>
+                    <span>Pets Found</span>
                 </div>
 
                 <div className="stat-card">
-                    <strong>500+</strong>
-                    <span>Happy Families</span>
+                    <strong>Adopt</strong>
+                    <span>Find Your Companion</span>
                 </div>
 
                 <div className="stat-card">
-                    <strong>1000+</strong>
-                    <span>Lives Impacted</span>
+                    <strong>Care</strong>
+                    <span>Give a Pet a Home</span>
                 </div>
-
             </section>
 
 

@@ -1,9 +1,10 @@
-:root {
-    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
 
-    color: #1f2937;
-    background: #f8fafc;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    font-family: 'DM Sans', sans-serif;
+    color: #352016;
+    background: #fffaf5;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -11,6 +12,36 @@
     -moz-osx-font-smoothing: grayscale;
 
     color-scheme: light;
+
+    /* PawConnect brand colors */
+    --primary: #873b1c;
+    --primary-hover: #6f2e14;
+    --primary-light: #fff0e6;
+    --accent: #f28a42;
+    --green: #527d25;
+    --green-light: #edf4e5;
+
+    /* Surfaces */
+    --background: #fffaf5;
+    --surface: #ffffff;
+    --surface-soft: #fff5ec;
+
+    /* Text */
+    --text-primary: #352016;
+    --text-secondary: #806f65;
+    --text-muted: #a29389;
+
+    /* Borders and shadows */
+    --border: #f0e4d9;
+    --shadow-sm: 0 3px 12px rgba(82, 47, 26, 0.06);
+    --shadow-md: 0 8px 26px rgba(82, 47, 26, 0.10);
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --radius-xl: 28px;
+
+    --page-width: 1440px;
 }
 
 * {
@@ -22,6 +53,7 @@ html {
     padding: 0;
     width: 100%;
     min-height: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -29,7 +61,9 @@ body {
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    background: #f8fafc;
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
 }
 
 #root {
@@ -37,6 +71,22 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-primary);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+p {
+    line-height: 1.65;
 }
 
 button,
@@ -50,6 +100,11 @@ button {
     cursor: pointer;
 }
 
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 img {
     max-width: 100%;
     display: block;
@@ -57,4 +112,119 @@ img {
 
 a {
     color: inherit;
+    text-decoration: none;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+input,
+select,
+textarea {
+    color: var(--text-primary);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #b2a49a;
+}
+
+:focus-visible {
+    outline: 3px solid rgba(242, 138, 66, 0.45);
+    outline-offset: 3px;
+}
+
+::selection {
+    color: #ffffff;
+    background: var(--primary);
+}
+
+/* Reusable primary button */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border: 1px solid var(--primary);
+    border-radius: 999px;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Reusable secondary button */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border: 1px solid #d9b6a3;
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--primary);
+    font-weight: 700;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+}
+
+/* Reusable card */
+.pc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Shared page container */
+.container {
+    width: min(100% - 40px, var(--page-width));
+    margin-inline: auto;
+}
+
+/* Responsive defaults */
+@media (max-width: 768px) {
+    .container {
+        width: min(100% - 28px, var(--page-width));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

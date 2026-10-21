@@ -1,0 +1,323 @@
+
+/* ========================================
+   PAWCONNECT AUTHENTICATION PAGE
+======================================== */
+
+.auth-page {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #fff8f0 0%, #fbf5f3 100%);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Layout: illustration on the left, form on the right */
+
+.auth-layout {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
+
+/* ========================================
+   DECORATIVE PET IMAGE
+======================================== */
+
+.auth-decoration {
+    display: block;
+    width: 260px;
+    height: 480px;
+    flex: 0 0 260px;
+    overflow: hidden;
+    border: 1px solid rgba(135, 59, 28, 0.08);
+    border-radius: 22px;
+    background-color: #f5e5d5;
+    box-shadow: 0 12px 32px rgba(77, 43, 27, 0.12);
+}
+
+.auth-decoration img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ========================================
+   AUTHENTICATION CARD
+======================================== */
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    min-width: 0;
+    padding: 38px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #f0e8e2;
+    border-radius: 24px;
+    box-shadow: 0 18px 55px rgba(77, 43, 27, 0.09);
+}
+
+/* Brand */
+
+.auth-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 35px;
+    color: #352016;
+    font-size: 25px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.auth-brand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #fff0e5;
+    font-size: 24px;
+}
+
+/* Heading */
+
+.auth-heading {
+    margin-bottom: 27px;
+    text-align: center;
+}
+
+.auth-eyebrow {
+    margin: 0 0 10px;
+    color: #c65b2b;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.auth-heading h1 {
+    margin: 0 0 12px;
+    color: #352016;
+    font-size: 30px;
+    line-height: 1.25;
+}
+
+.auth-subtitle {
+    margin: 0;
+    color: #806f65;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ========================================
+   FORM FIELDS
+======================================== */
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.auth-field label {
+    color: #49372d;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.auth-field input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 13px 14px;
+    box-sizing: border-box;
+    border: 1px solid #e7d9cd;
+    border-radius: 11px;
+    outline: none;
+    background: #fffdfb;
+    color: #352016;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-field input::placeholder {
+    color: #a29389;
+}
+
+.auth-field input:focus {
+    border-color: #c65b2b;
+    box-shadow: 0 0 0 3px rgba(198, 91, 43, 0.12);
+}
+
+/* ========================================
+   SUBMIT BUTTON
+======================================== */
+
+.auth-submit {
+    width: 100%;
+    margin-top: 4px;
+    padding: 14px;
+    border: none;
+    border-radius: 11px;
+    background: #d96732;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.auth-submit:hover:not(:disabled) {
+    background: #b94e21;
+    transform: translateY(-1px);
+}
+
+.auth-submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* ========================================
+   ERROR AND SUCCESS MESSAGES
+======================================== */
+
+.auth-message {
+    margin: 0;
+    padding: 11px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.auth-error {
+    background: #fff0f0;
+    color: #b42318;
+}
+
+.auth-success {
+    background: #edf9f0;
+    color: #237442;
+}
+
+/* ========================================
+   REGISTER / LOGIN SWITCH
+======================================== */
+
+.auth-switch {
+    margin-top: 24px;
+    color: #806f65;
+    font-size: 13px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.auth-switch button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #c65b2b;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.auth-switch button:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+
+.auth-footer {
+    margin: 28px 0 0;
+    color: #a29389;
+    font-size: 11px;
+    text-align: center;
+}
+
+/* ========================================
+   RESPONSIVE LAYOUT
+======================================== */
+
+@media (max-width: 850px) {
+    .auth-page {
+        padding: 28px 20px;
+    }
+
+    .auth-layout {
+        gap: 24px;
+    }
+
+    .auth-decoration {
+        width: 210px;
+        height: 400px;
+        flex-basis: 210px;
+    }
+
+    .auth-card {
+        max-width: 440px;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 650px) {
+    .auth-page {
+        padding: 20px 14px;
+    }
+
+    .auth-layout {
+        max-width: 460px;
+    }
+
+    .auth-decoration {
+        display: none;
+    }
+
+    .auth-card {
+        max-width: 100%;
+        padding: 28px 22px;
+        border-radius: 18px;
+    }
+
+    .auth-heading h1 {
+        font-size: 26px;
+    }
+}
+
+.auth-decoration {
+    display: block;
+    width: 260px;
+    height: 480px;
+    flex: 0 0 260px;
+    overflow: hidden;
+    border-radius: 22px;
+    background-color: #f5e5d5;
+}
+
+.auth-decoration img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
