@@ -1,4 +1,3 @@
-
 /* =========================================
    PAWCONNECT HOME PAGE
    Warm cream, terracotta, and natural green
@@ -940,5 +939,189 @@
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+    }
+}
+
+
+/* ---- tiny SVG shapes used as background images ---- */
+:root {
+    --pc-paw-brown: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23c99a72' fill-opacity='.30'%3E%3Cellipse cx='13' cy='29' rx='6.5' ry='9' transform='rotate(-22 13 29)'/%3E%3Cellipse cx='26' cy='15' rx='6.5' ry='9' transform='rotate(-8 26 15)'/%3E%3Cellipse cx='40' cy='15' rx='6.5' ry='9' transform='rotate(8 40 15)'/%3E%3Cellipse cx='53' cy='29' rx='6.5' ry='9' transform='rotate(22 53 29)'/%3E%3Cpath d='M32 31c-9 0-18 9-18 18 0 6 5 8.5 10 7.5 3-.6 5-1.8 8-1.8s5 1.2 8 1.8c5 1 10-1.5 10-7.5 0-9-9-18-18-18z'/%3E%3C/svg%3E");
+
+    --pc-paw-green: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%2399b865' fill-opacity='.45'%3E%3Cellipse cx='13' cy='29' rx='6.5' ry='9' transform='rotate(-22 13 29)'/%3E%3Cellipse cx='26' cy='15' rx='6.5' ry='9' transform='rotate(-8 26 15)'/%3E%3Cellipse cx='40' cy='15' rx='6.5' ry='9' transform='rotate(8 40 15)'/%3E%3Cellipse cx='53' cy='29' rx='6.5' ry='9' transform='rotate(22 53 29)'/%3E%3Cpath d='M32 31c-9 0-18 9-18 18 0 6 5 8.5 10 7.5 3-.6 5-1.8 8-1.8s5 1.2 8 1.8c5 1 10-1.5 10-7.5 0-9-9-18-18-18z'/%3E%3C/svg%3E");
+
+    --pc-paw-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23ffffff' fill-opacity='.10'%3E%3Cellipse cx='13' cy='29' rx='6.5' ry='9' transform='rotate(-22 13 29)'/%3E%3Cellipse cx='26' cy='15' rx='6.5' ry='9' transform='rotate(-8 26 15)'/%3E%3Cellipse cx='40' cy='15' rx='6.5' ry='9' transform='rotate(8 40 15)'/%3E%3Cellipse cx='53' cy='29' rx='6.5' ry='9' transform='rotate(22 53 29)'/%3E%3Cpath d='M32 31c-9 0-18 9-18 18 0 6 5 8.5 10 7.5 3-.6 5-1.8 8-1.8s5 1.2 8 1.8c5 1 10-1.5 10-7.5 0-9-9-18-18-18z'/%3E%3C/svg%3E");
+
+    --pc-heart-line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f0664a' stroke-opacity='.55' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z'/%3E%3C/svg%3E");
+
+    --pc-heart-fill: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f6c98f' fill-opacity='.65'%3E%3Cpath d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z'/%3E%3C/svg%3E");
+
+    --pc-leaf-a: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cg transform='rotate(35 40 40)'%3E%3Cpath d='M40 4C58 24 60 54 40 76 20 54 22 24 40 4z' fill='%23a9c46b' fill-opacity='.42'/%3E%3Cpath d='M40 14V70' stroke='%23fffaf5' stroke-width='1.6' opacity='.6'/%3E%3C/g%3E%3C/svg%3E");
+
+    --pc-leaf-b: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cg transform='rotate(-30 40 40)'%3E%3Cpath d='M40 4C58 24 60 54 40 76 20 54 22 24 40 4z' fill='%23bdd48a' fill-opacity='.45'/%3E%3Cpath d='M40 14V70' stroke='%23fffaf5' stroke-width='1.6' opacity='.6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---- page-level soft colour glows ---- */
+main:has(> .hero) {
+    position: relative;
+    overflow-x: clip;
+    background:
+        radial-gradient(ellipse 480px 380px at 100% 36%, rgba(253, 223, 200, 0.65), transparent 70%),
+        radial-gradient(ellipse 420px 440px at 0% 58%, rgba(232, 239, 207, 0.85), transparent 70%),
+        radial-gradient(ellipse 460px 360px at 100% 82%, rgba(253, 223, 200, 0.45), transparent 70%),
+        #fffaf5;
+}
+
+/* ---- HERO: leaves, paw, hearts + peach glow ---- */
+.hero {
+    position: relative;
+    isolation: isolate;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hero::before {
+    background-image:
+        var(--pc-leaf-a),
+        var(--pc-leaf-b),
+        var(--pc-leaf-a),
+        var(--pc-paw-green),
+        var(--pc-heart-line),
+        var(--pc-heart-fill);
+    background-repeat: no-repeat;
+    background-size: 120px, 80px, 130px, 48px, 56px, 34px;
+    background-position:
+        -34px 34%,
+        10px 58%,
+        -44px 84%,
+        26px 10%,
+        47% 8%,
+        49% 82%;
+}
+
+.hero::after {
+    background:
+        radial-gradient(circle at 78% 42%, rgba(253, 214, 180, 0.6), transparent 42%),
+        radial-gradient(circle at 100% 100%, rgba(232, 239, 207, 0.7), transparent 30%);
+}
+
+/* ---- STATS, SEARCH, FEATURED: full-width side decorations ---- */
+.stats-section,
+.pet-search-section,
+.featured-section {
+    isolation: isolate;
+}
+
+.pet-search-section,
+.featured-section {
+    position: relative;
+}
+
+.stats-section::before,
+.pet-search-section::before,
+.featured-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    z-index: -1;
+    width: 100vw;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background-repeat: no-repeat;
+}
+
+.stats-section::before {
+    background-image: var(--pc-paw-brown), var(--pc-paw-brown), var(--pc-heart-fill), var(--pc-paw-brown);
+    background-size: 38px, 28px, 30px, 34px;
+    background-position: 3% 20%, 6% 78%, 95% 25%, 97% 80%;
+}
+
+.pet-search-section::before {
+    background-image: var(--pc-heart-fill), var(--pc-paw-brown), var(--pc-heart-line), var(--pc-paw-brown);
+    background-size: 34px, 40px, 44px, 30px;
+    background-position: 3% 55%, 7% 12%, 95% 30%, 92% 90%;
+}
+
+.featured-section::before {
+    background-image:
+        var(--pc-leaf-a),
+        var(--pc-paw-brown),
+        var(--pc-heart-fill),
+        var(--pc-leaf-b),
+        var(--pc-paw-green);
+    background-size: 90px, 38px, 30px, 100px, 44px;
+    background-position: -24px 22%, 97% 6%, 3% 88%, calc(100% + 26px) 62%, 95% 94%;
+}
+
+/* ---- HOW IT WORKS: scattered paws and hearts ---- */
+.how-it-works {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.how-it-works::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        var(--pc-paw-brown),
+        var(--pc-paw-brown),
+        var(--pc-heart-line),
+        var(--pc-paw-brown),
+        var(--pc-heart-fill),
+        var(--pc-leaf-a);
+    background-repeat: no-repeat;
+    background-size: 46px, 36px, 40px, 42px, 30px, 90px;
+    background-position: 4% 14%, 95% 10%, 90% 52%, 7% 88%, 50% 96%, calc(100% + 20px) 96%;
+}
+
+/* ---- CTA: big faint paw watermark ---- */
+.home-cta {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.home-cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: var(--pc-paw-white), var(--pc-paw-white);
+    background-repeat: no-repeat;
+    background-size: 190px, 90px;
+    background-position: 62% 120%, 96% -14px;
+}
+
+/* ---- smaller / fewer decorations on phones ---- */
+@media (max-width: 650px) {
+    .hero::before {
+        background-size: 80px, 56px, 90px, 34px, 38px, 24px;
+        opacity: 0.8;
+    }
+
+    .stats-section::before {
+        display: none;
+    }
+
+    .featured-section::before,
+    .pet-search-section::before {
+        opacity: 0.6;
+    }
+
+    .home-cta::after {
+        background-size: 140px, 60px;
     }
 }

@@ -598,3 +598,125 @@
         padding: 18px;
     }
 }
+
+
+
+.browse-page {
+    --pcb-paw-brown: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23c99a72' fill-opacity='.30'%3E%3Cellipse cx='13' cy='29' rx='6.5' ry='9' transform='rotate(-22 13 29)'/%3E%3Cellipse cx='26' cy='15' rx='6.5' ry='9' transform='rotate(-8 26 15)'/%3E%3Cellipse cx='40' cy='15' rx='6.5' ry='9' transform='rotate(8 40 15)'/%3E%3Cellipse cx='53' cy='29' rx='6.5' ry='9' transform='rotate(22 53 29)'/%3E%3Cpath d='M32 31c-9 0-18 9-18 18 0 6 5 8.5 10 7.5 3-.6 5-1.8 8-1.8s5 1.2 8 1.8c5 1 10-1.5 10-7.5 0-9-9-18-18-18z'/%3E%3C/svg%3E");
+
+    --pcb-paw-green: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%2399b865' fill-opacity='.45'%3E%3Cellipse cx='13' cy='29' rx='6.5' ry='9' transform='rotate(-22 13 29)'/%3E%3Cellipse cx='26' cy='15' rx='6.5' ry='9' transform='rotate(-8 26 15)'/%3E%3Cellipse cx='40' cy='15' rx='6.5' ry='9' transform='rotate(8 40 15)'/%3E%3Cellipse cx='53' cy='29' rx='6.5' ry='9' transform='rotate(22 53 29)'/%3E%3Cpath d='M32 31c-9 0-18 9-18 18 0 6 5 8.5 10 7.5 3-.6 5-1.8 8-1.8s5 1.2 8 1.8c5 1 10-1.5 10-7.5 0-9-9-18-18-18z'/%3E%3C/svg%3E");
+
+    --pcb-paw-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23ffffff' fill-opacity='.10'%3E%3Cellipse cx='13' cy='29' rx='6.5' ry='9' transform='rotate(-22 13 29)'/%3E%3Cellipse cx='26' cy='15' rx='6.5' ry='9' transform='rotate(-8 26 15)'/%3E%3Cellipse cx='40' cy='15' rx='6.5' ry='9' transform='rotate(8 40 15)'/%3E%3Cellipse cx='53' cy='29' rx='6.5' ry='9' transform='rotate(22 53 29)'/%3E%3Cpath d='M32 31c-9 0-18 9-18 18 0 6 5 8.5 10 7.5 3-.6 5-1.8 8-1.8s5 1.2 8 1.8c5 1 10-1.5 10-7.5 0-9-9-18-18-18z'/%3E%3C/svg%3E");
+
+    --pcb-heart-line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f0664a' stroke-opacity='.55' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z'/%3E%3C/svg%3E");
+
+    --pcb-heart-fill: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f6c98f' fill-opacity='.65'%3E%3Cpath d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z'/%3E%3C/svg%3E");
+
+    --pcb-leaf-a: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cg transform='rotate(35 40 40)'%3E%3Cpath d='M40 4C58 24 60 54 40 76 20 54 22 24 40 4z' fill='%23a9c46b' fill-opacity='.42'/%3E%3Cpath d='M40 14V70' stroke='%23fffaf5' stroke-width='1.6' opacity='.6'/%3E%3C/g%3E%3C/svg%3E");
+
+    --pcb-leaf-b: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cg transform='rotate(-30 40 40)'%3E%3Cpath d='M40 4C58 24 60 54 40 76 20 54 22 24 40 4z' fill='%23bdd48a' fill-opacity='.45'/%3E%3Cpath d='M40 14V70' stroke='%23fffaf5' stroke-width='1.6' opacity='.6'/%3E%3C/g%3E%3C/svg%3E");
+
+    --pcb-tile-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 560'%3E%3Cg transform='translate(62 10) scale(0.9)'%3E%3Cg transform='rotate(35 40 40)'%3E%3Cpath d='M40 4C58 24 60 54 40 76 20 54 22 24 40 4z' fill='%23a9c46b' fill-opacity='.42'/%3E%3Cpath d='M40 14V70' stroke='%23fffaf5' stroke-width='1.6' opacity='.6'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(34 160) scale(0.55)' fill='%23c99a72' fill-opacity='.30'%3E%3Cellipse cx='13' cy='29' rx='6.5' ry='9' transform='rotate(-22 13 29)'/%3E%3Cellipse cx='26' cy='15' rx='6.5' ry='9' transform='rotate(-8 26 15)'/%3E%3Cellipse cx='40' cy='15' rx='6.5' ry='9' transform='rotate(8 40 15)'/%3E%3Cellipse cx='53' cy='29' rx='6.5' ry='9' transform='rotate(22 53 29)'/%3E%3Cpath d='M32 31c-9 0-18 9-18 18 0 6 5 8.5 10 7.5 3-.6 5-1.8 8-1.8s5 1.2 8 1.8c5 1 10-1.5 10-7.5 0-9-9-18-18-18z'/%3E%3C/g%3E%3Cg transform='translate(92 270) scale(1.2)' fill='none' stroke='%23f0664a' stroke-opacity='.5' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z'/%3E%3C/g%3E%3Cg transform='translate(40 380) scale(0.7)' fill='%2399b865' fill-opacity='.45'%3E%3Cellipse cx='13' cy='29' rx='6.5' ry='9' transform='rotate(-22 13 29)'/%3E%3Cellipse cx='26' cy='15' rx='6.5' ry='9' transform='rotate(-8 26 15)'/%3E%3Cellipse cx='40' cy='15' rx='6.5' ry='9' transform='rotate(8 40 15)'/%3E%3Cellipse cx='53' cy='29' rx='6.5' ry='9' transform='rotate(22 53 29)'/%3E%3Cpath d='M32 31c-9 0-18 9-18 18 0 6 5 8.5 10 7.5 3-.6 5-1.8 8-1.8s5 1.2 8 1.8c5 1 10-1.5 10-7.5 0-9-9-18-18-18z'/%3E%3C/g%3E%3Cg transform='translate(98 480) scale(1)' fill='%23f6c98f' fill-opacity='.7'%3E%3Cpath d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z'/%3E%3C/g%3E%3C/svg%3E");
+
+    --pcb-tile-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 640'%3E%3Cg transform='translate(10 70) scale(0.95)' fill='%23f6c98f' fill-opacity='.7'%3E%3Cpath d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z'/%3E%3C/g%3E%3Cg transform='translate(8 230) scale(0.5)' fill='%23c99a72' fill-opacity='.30'%3E%3Cellipse cx='13' cy='29' rx='6.5' ry='9' transform='rotate(-22 13 29)'/%3E%3Cellipse cx='26' cy='15' rx='6.5' ry='9' transform='rotate(-8 26 15)'/%3E%3Cellipse cx='40' cy='15' rx='6.5' ry='9' transform='rotate(8 40 15)'/%3E%3Cellipse cx='53' cy='29' rx='6.5' ry='9' transform='rotate(22 53 29)'/%3E%3Cpath d='M32 31c-9 0-18 9-18 18 0 6 5 8.5 10 7.5 3-.6 5-1.8 8-1.8s5 1.2 8 1.8c5 1 10-1.5 10-7.5 0-9-9-18-18-18z'/%3E%3C/g%3E%3Cg transform='translate(-8 380) scale(0.8)'%3E%3Cg transform='rotate(-30 40 40)'%3E%3Cpath d='M40 4C58 24 60 54 40 76 20 54 22 24 40 4z' fill='%23bdd48a' fill-opacity='.42'/%3E%3Cpath d='M40 14V70' stroke='%23fffaf5' stroke-width='1.6' opacity='.6'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(18 540) scale(1)' fill='none' stroke='%23f0664a' stroke-opacity='.5' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z'/%3E%3C/g%3E%3C/svg%3E");
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+/* ---- soft colour glows over the page ---- */
+.browse-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 520px 420px at 100% 30%, rgba(253, 223, 200, 0.7), transparent 70%),
+        radial-gradient(ellipse 480px 420px at 0% 62%, rgba(232, 239, 207, 0.85), transparent 70%),
+        radial-gradient(ellipse 480px 380px at 100% 100%, rgba(253, 223, 200, 0.55), transparent 70%);
+}
+
+/* ---- paws, hearts and leaves down both margins (below the hero) ---- */
+.browse-page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-repeat: repeat-y, repeat-y, no-repeat, no-repeat;
+    background-image:
+        var(--pcb-tile-right),
+        var(--pcb-tile-right),
+        var(--pcb-leaf-a),
+        var(--pcb-leaf-b);
+    background-size: 140px 560px, 140px 560px, 110px, 100px;
+    background-position:
+        right 0 top 0,
+        left 0 top 280px,
+        left -34px bottom 30px,
+        right -30px bottom 80px;
+}
+
+/* ---- hero: shapes around the centred text ---- */
+.browse-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.browse-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-image:
+        radial-gradient(ellipse 560px 260px at 50% 0%, rgba(255, 255, 255, 0.55), transparent 70%),
+        radial-gradient(ellipse 420px 300px at 0% 100%, rgba(232, 239, 207, 0.9), transparent 70%),
+        var(--pcb-leaf-a),
+        var(--pcb-leaf-b),
+        var(--pcb-paw-brown),
+        var(--pcb-heart-line),
+        var(--pcb-heart-fill),
+        var(--pcb-paw-green),
+        var(--pcb-paw-brown),
+        var(--pcb-heart-line);
+    background-size:
+        auto,
+        auto,
+        120px,
+        110px,
+        46px,
+        42px,
+        32px,
+        46px,
+        34px,
+        30px;
+    background-position:
+        0 0,
+        0 0,
+        left -34px top 24px,
+        right -30px bottom 6px,
+        left 9% bottom 26px,
+        right 9% top 30px,
+        left 19% top 44px,
+        right 20% bottom 34px,
+        right 4% top 46%,
+        left 4% top 52%;
+}
+
+/* ---- phones: fewer / fainter shapes ---- */
+@media (max-width: 750px) {
+    .browse-page::after {
+        opacity: 0.5;
+    }
+
+    .browse-hero::before {
+        opacity: 0.7;
+        background-size:
+            auto, auto, 80px, 76px, 32px, 30px, 24px, 32px, 24px, 22px;
+    }
+}

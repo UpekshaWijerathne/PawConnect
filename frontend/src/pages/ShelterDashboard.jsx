@@ -329,15 +329,6 @@ function ShelterDashboard() {
                         Dashboard
                     </Link>
 
-                    <Link
-                        to="/pets"
-                        className="sidebar-link"
-                        onClick={() => setSidebarOpen(false)}
-                    >
-                        <PawPrint size={20} />
-                        Browse Pets
-                    </Link>
-
                     <button
                         type="button"
                         className="sidebar-link"
@@ -423,13 +414,6 @@ function ShelterDashboard() {
                         </p>
                     </div>
 
-                    <Link
-                        to="/pets"
-                        className="browse-button"
-                    >
-                        <PawPrint size={18} />
-                        Browse Pets
-                    </Link>
                 </section>
 
                 {/* Dashboard error */}
