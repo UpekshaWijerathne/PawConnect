@@ -108,7 +108,7 @@ function Login() {
                 if (role === "shelter" || role === "admin") {
                     navigate("/shelter-dashboard");
                 } else {
-                    navigate("/");
+                    navigate("/adopter-dashboard");
                 }
             }
         } catch (err) {
