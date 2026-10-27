@@ -17,7 +17,7 @@ const adoptionRoutes = require("./routes/adoption");
 const app = express();
 app.use(cors());
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
